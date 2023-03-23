@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.IGamblingGame;
 import com.github.zipcodewilmington.casino.PlayerInterface;
@@ -77,7 +78,8 @@ public class SlotsGame implements IGamblingGame {
         while (true) {
             if (playerList.get(0).getArcadeAccount().getBalance() == 0){
                 System.out.println("You're a brokie. What colors your Bugatti... returning to main menu.");
-                break;
+                Casino casino = new Casino();
+                casino.checkinLobby(playerList.get(0).getArcadeAccount());
             }
             System.out.println("Please enter bet amount or type 'quit' to exit: ");
             String input = sc.next();

@@ -23,6 +23,7 @@ public class Casino{
     private String userName2;
     private String password2;
     public final String ANSI_RED = "\u001B[31m";
+    Casino casino;
 
 
     public void mainMenu() {
