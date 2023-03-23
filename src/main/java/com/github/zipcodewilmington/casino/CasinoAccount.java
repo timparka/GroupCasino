@@ -1,5 +1,7 @@
 package com.github.zipcodewilmington.casino;
 
+
+
 import java.util.Scanner;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Scanner;
  * The `ArcadeAccount` is used to log into the system to select a `Game` to play.
  */
 public class CasinoAccount {
+
 
     Integer balance;
     String userName;
