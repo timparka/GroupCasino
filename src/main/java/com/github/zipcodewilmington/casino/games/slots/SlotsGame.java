@@ -1,5 +1,7 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.Casino;
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.IGamblingGame;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.utils.AnsiColor;
@@ -14,7 +16,7 @@ import java.util.Scanner;
  * Created by leon on 7/21/2020.
  */
 public class SlotsGame implements IGamblingGame {
-    List<PlayerInterface> slotPlayer = new ArrayList<>();
+    List<PlayerInterface> playerList = new ArrayList<>();
     int bet;
     ArrayList<String> slotThangs = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
@@ -23,11 +25,22 @@ public class SlotsGame implements IGamblingGame {
 
     public SlotsGame() {
         slotThangs.add("lemons");
+        slotThangs.add("lemons");
+        slotThangs.add("lemons");
         slotThangs.add("seven");
         slotThangs.add("bars");
+        slotThangs.add("bars");
+        slotThangs.add("apples");
+        slotThangs.add("apples");
         slotThangs.add("apples");
         slotThangs.add("banana");
+        slotThangs.add("banana");
+        slotThangs.add("banana");
         slotThangs.add("cherry");
+        slotThangs.add("cherry");
+        slotThangs.add("cherry");
+        slotThangs.add("orange");
+        slotThangs.add("orange");
         slotThangs.add("orange");
     }
 
@@ -52,38 +65,48 @@ public class SlotsGame implements IGamblingGame {
 
     @Override
     public void add(PlayerInterface player) {
-        slotPlayer.add(player);
+        playerList.add(player);
     }
 
     @Override
     public void remove(PlayerInterface player) {
-        slotPlayer.remove(player);
+        playerList.remove(player);
     }
 
     @Override
     public void run() {
         while (true) {
+            if (playerList.get(0).getArcadeAccount().getBalance() == 0){
+                System.out.println("You're a brokie. What colors your Bugatti... returning to main menu.");
+                Casino casino = new Casino();
+                casino.checkinLobby(playerList.get(0).getArcadeAccount());
+            }
             System.out.println("Please enter bet amount or type 'quit' to exit: ");
             String input = sc.next();
             if (input.equalsIgnoreCase("quit")) {
                 System.out.println("Thanks for playing!");
                 break;
             }
-
             try {
                 bet = Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input, please try again.");
                 continue;
             }
+            if (this.bet(bet)){
+                System.out.println("You have insufficient funds. Current balance: " + playerList.get(0).getArcadeAccount().getBalance());
+                continue;
+            }
 
             lastSpinResults = pullLever();
             System.out.println("The results are: " + lastSpinResults);
-            if (isWinner()) {
+            if (this.isWinner()) {
                 System.out.println("Congratulations, you won!");
             } else {
                 System.out.println("Sorry, you lost.");
             }
+            int currentBalance = playerList.get(0).getArcadeAccount().getBalance();
+            playerList.get(0).getArcadeAccount().setBalance(currentBalance + this.payOut(bet));
         }
     }
 
@@ -114,19 +137,17 @@ public class SlotsGame implements IGamblingGame {
     }
 
     @Override
-    public int bet(int currentBalance) {
-        IOConsole console = new IOConsole(AnsiColor.BLUE);
-        int balance = console.getIntegerInput("Enter how much you'd like to bet: ");
-        if (balance >= currentBalance){
-            return currentBalance;
+    public boolean bet(int betAmount) {
+        if (playerList.get(0).getArcadeAccount().getBalance() < betAmount){
+            return true;
         }
-        return balance;
+        return false;
     }
 
     @Override
     public int payOut(int bet) {
         lastSpinResults = pullLever();
-        if (isWinner()) {
+        if (this.isWinner()) {
             return bet * payOutMultiplier(lastSpinResults.get(0));
         } else {
             return -bet;
