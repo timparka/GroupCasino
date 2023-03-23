@@ -9,8 +9,8 @@ import com.github.zipcodewilmington.Casino;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-public class CasinoAccountManager {
+ls
+public class gitCasinoAccountManager {
     public static final String ANSI_RED = "\u001B[31m";
     static Scanner input = new Scanner(System.in);
 
