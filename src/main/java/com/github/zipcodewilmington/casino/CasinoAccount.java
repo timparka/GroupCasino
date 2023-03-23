@@ -11,9 +11,13 @@ import java.util.Scanner;
  */
 public class CasinoAccount {
 
-    private Integer balance;
-    private String username;
-    private String password;
+
+
+
+    Integer balance;
+    String username;
+    String password;
+
     char input1 = 'Z';
     Scanner input = new Scanner(System.in);
 

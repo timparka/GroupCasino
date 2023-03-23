@@ -23,7 +23,9 @@ public class Casino{
     private String userName2;
     private String password2;
     public final String ANSI_RED = "\u001B[31m";
+
     Casino casino;
+
 
 
     public void mainMenu() {
@@ -231,9 +233,11 @@ public class Casino{
                 break;
 
             case 's':
+
                 SlotsPlayer slotsPlayer = new SlotsPlayer(z);
                 play(new SlotsGame(), slotsPlayer);
                 z.setBalance(slotsPlayer.getBalance());
+
                 //slots();
                 break;
 
@@ -259,12 +263,14 @@ public class Casino{
         }
     }
 
+
     private void play(Object gameObject, Object playerObject) {
         GameInterface game = (GameInterface)gameObject;
         PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);
         game.run();
     }
+
 
     public static void delay() {
         try {
@@ -332,4 +338,3 @@ public class Casino{
     }
 
 }
-
