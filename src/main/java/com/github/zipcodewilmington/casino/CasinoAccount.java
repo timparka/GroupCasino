@@ -9,27 +9,34 @@ import java.util.Scanner;
  */
 public class CasinoAccount {
 
-    Integer balance;
-    String userName;
-    String password;
+    private Integer balance;
+    private String username;
+    private String password;
     char input1 = 'Z';
     Scanner input = new Scanner(System.in);
 
-    public CasinoAccount(){}
+    public CasinoAccount(){
+    }
 
 
     public CasinoAccount(String username, String password, Integer balance){
-        this.userName = username;
+        this.username = username;
         this.password = password;
         this.balance = balance;
 
+    }
+
+    public CasinoAccount(CasinoAccount casinoAccountOther) {
+        this.username = casinoAccountOther.getUserName();
+        this.password = casinoAccountOther.getPassword();
+        this.balance = casinoAccountOther.getBalance();
     }
 
     public void deposit(int deposit){
         this.balance = balance + deposit;
     }
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public String getPassword() {
@@ -37,12 +44,12 @@ public class CasinoAccount {
     }
 
     public CasinoAccount getAccount(){
-        CasinoAccount account = new CasinoAccount(userName, password, balance);
+        CasinoAccount account = new CasinoAccount(username, password, balance);
         return account;
     }
 
     public String toString(){
-        return userName + "," + password + "," + balance;
+        return username + "," + password + "," + balance;
     }
 
     public int getBalance() {
