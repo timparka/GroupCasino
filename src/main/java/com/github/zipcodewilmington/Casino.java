@@ -11,11 +11,8 @@ import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
-<<<<<<< HEAD
-/**
- * Created by leon on 7/21/2020.
- */
-=======
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -326,6 +323,3 @@ public class Casino{
     }
 
 }
-
-
->>>>>>> hiepcasino

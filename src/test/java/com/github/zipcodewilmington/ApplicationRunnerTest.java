@@ -8,19 +8,9 @@ import org.junit.jupiter.api.Test;
  * Created by leon on 7/21/2020.
  */
 public class ApplicationRunnerTest {
-<<<<<<< HEAD
+
+
     @Test
-    public void test() { // TODO - replace boiler-plate logic with business logic
-        // given
-        //Runnable runnable = new Casino();
-
-        // when
-        //runnable.run();
-
-        // then
-        //Assert.assertNotNull(runnable.toString());
-=======
-    @org.junit.jupiter.api.Test
     void deposit() {
         //given
         CasinoAccount hiep = new CasinoAccount("ZipCode", "rocks", 1000);
@@ -31,10 +21,10 @@ public class ApplicationRunnerTest {
 
         //then
         Assert.assertEquals(expected, hiep.getBalance());
->>>>>>> hiepcasino
+
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getUserName() {
         //given
         CasinoAccount hiep = new CasinoAccount("ZipCode", "rocks", 1000);
@@ -44,19 +34,19 @@ public class ApplicationRunnerTest {
         //then
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getPassword() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getAccount() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testToString() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getBalance() {
     }
 
