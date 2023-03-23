@@ -1,5 +1,7 @@
 package com.github.zipcodewilmington.casino;
 
+
+
 import java.util.Scanner;
 
 /**
@@ -9,9 +11,16 @@ import java.util.Scanner;
  */
 public class CasinoAccount {
 
+<<<<<<< HEAD
     private Integer balance;
     private String username;
     private String password;
+
+
+    Integer balance;
+    String userName;
+    String password;
+
     char input1 = 'Z';
     Scanner input = new Scanner(System.in);
 
